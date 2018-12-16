@@ -26,12 +26,13 @@ holiday_hash[:winter].values.flatten
 end 
 
 def all_supplies_in_holidays(holiday_hash)
-holiday_hash.each do |season, holiday]
-puts "#{season.capitalize}:"
-holiday.each do |holiday_name, supplies|
-  puts "  #{holiday_name.to_s.split("
-  end 
-end 
+holiday_hash.collect do |season, v|
+    puts "#{season.capitalize}:"
+    v.collect do |holiday, items|
+      puts "  #{holiday.to_s.gsub("_", " ").split.map(&:capitalize).join(' ')}: #{items.join(", ")}"
+    end
+  end
+end
 
 # def all_holidays_with_bbq(holiday_hash)
 # bbq_holiday = []
